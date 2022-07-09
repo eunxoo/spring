@@ -42,8 +42,8 @@ public class NaverShopSearch {
         return ret;
     }
 
-        public static void main(String[] args){
+    public static void main(String[] args){
         NaverShopSearch naverShopSearch = new NaverShopSearch();
         naverShopSearch.search("아이맥");
-        }
+    }
 }

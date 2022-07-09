@@ -1,5 +1,6 @@
 package com.sparta.week04.service;
 
+import com.sparta.week04.dto.ItemDto;
 import com.sparta.week04.dto.ProductMypriceRequestDto;
 import com.sparta.week04.dto.ProductRequestDto;
 import com.sparta.week04.models.Product;
@@ -22,4 +23,15 @@ public class ProductService {
         product.update(requestDto);
         return id;
     }
+
+    @Transactional
+    public Long updateBySearch(Long id, ItemDto itemDto) {
+        Product product = productRepository.findById(id).orElseThrow(
+                () -> new NullPointerException("해당 아이디가 존재하지 않습니다.")
+        );
+        product.updateByItemDto(itemDto); // 예약된 시간에 가격 변경
+        return id;
+    }
+
+
 }

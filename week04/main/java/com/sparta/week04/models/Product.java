@@ -1,5 +1,6 @@
 package com.sparta.week04.models;
 
+import com.sparta.week04.dto.ItemDto;
 import com.sparta.week04.dto.ProductMypriceRequestDto;
 import com.sparta.week04.dto.ProductRequestDto;
 import lombok.Getter;
@@ -47,5 +48,10 @@ public class Product extends Timestamped {
     // 관심 가격 변경 시 이용합니다.
     public void update(ProductMypriceRequestDto requestDto) {
         this.myprice = requestDto.getMyprice();
+    }
+
+    // 예약된 시간에 가격 변경 시
+    public void updateByItemDto(ItemDto itemDto) {
+        this.lprice = itemDto.getLprice();
     }
 }
