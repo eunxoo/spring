@@ -9,7 +9,13 @@ import java.util.Optional;
 
 public class MemberService  {
 
-    private final MemberRepository memberRepository = new MemoryMemberRepository();
+    private final MemberRepository memberRepository;
+
+    // test에서 객체를 생성하면 이 객체와 다른 리포지토리를 사용하게 되어, 아래와 같은 생성자를 통해 같은 리포지토리를 사용할 수 있게 함.
+    // 외부에서 리포지토리를 넣어줌 -> DI Dependency Injection
+    public MemberService(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
+    }
 
     /* 회원가입 */
     public Long join(Member member) {
